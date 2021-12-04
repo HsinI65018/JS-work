@@ -59,7 +59,9 @@
 			request.send();
 		}
 
-		verseChoose.addEventListener('onchange',updataDisplay(verse));
+		verseChoose.addEventListener('onchange',function(){
+		  updataDisplay();
+		});
 		updataDisplay('Verse 1');
 		verseChoose.value = 'Verse 1';
 	</script>
