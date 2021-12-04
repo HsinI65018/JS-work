@@ -43,10 +43,10 @@
 
 	<script type="text/javascript">
 		const verseChoose = document.querySelector('select');
+		const verse = verseChoose.value;
 		const pomeDisplay = document.querySelector('pre');
 
 		function updataDisplay(verse) {
-			const verse = verseChoose.value;
 			verse = verse.replace(' ','');
 			verse = verse.toLowerCase();
 			let url = verse + '.txt';
@@ -61,7 +61,7 @@
 
 		updataDisplay('Verse 1');
 		verseChoose.value = 'Verse 1';
-		verseChoose.addEventListener('onchange',updataDisplay);
+		verseChoose.addEventListener('onchange',updataDisplay(verse));
 	</script>
 </body>
 </html>
