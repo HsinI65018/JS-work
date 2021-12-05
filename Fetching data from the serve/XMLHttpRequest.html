@@ -43,7 +43,6 @@
 
 	<script type="text/javascript">
 		const verseChoose = document.querySelector('select');
-		const verse = verseChoose.value;
 		const pomeDisplay = document.querySelector('pre');
 
 		function updataDisplay(verse) {
@@ -59,9 +58,12 @@
 			request.send();
 		}
 
-		verseChoose.addEventListener('onchange',updataDisplay.bind(null,verse));
 		updataDisplay('Verse 1');
 		verseChoose.value = 'Verse 1';
+		verseChoose.addEventListener('onchange',function(){
+      const verse = verseChoose.value;
+      updataDisplay(verse);
+    });
 	</script>
 </body>
 </html>
