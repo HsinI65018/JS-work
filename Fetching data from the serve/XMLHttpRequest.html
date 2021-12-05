@@ -58,10 +58,10 @@
 			request.send();
 		}
 
-		verseChoose.addEventListener('onchange',function(){
-      		  const verse = verseChoose.value;
-     		   updataDisplay(verse);
-    		});
+		verseChoose.onchange = function(){
+	         const verse = verseChoose.value;
+	         updataDisplay(verse);
+	        };
 		updataDisplay('Verse 1');
 		verseChoose.value = 'Verse 1';
 	</script>
