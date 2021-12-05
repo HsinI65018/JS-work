@@ -45,16 +45,21 @@
 		const verseChoose = document.querySelector('select');
 		const pomeDisplay = document.querySelector('pre');
 
-		fetch(url).then(response =>{
-			response.text().then(text =>{
-				pomeDisplay.textContent = text;
+		function updataDisplay(verse) {
+			verse = verse.replace(' ','');
+			verse = verse.toLowerCase();
+			let url = verse + '.txt';
+			fetch(url).then(response =>{
+				response.text().then(text =>{
+					pomeDisplay.textContent = text;
+				});
 			});
-		});
+		};
 
-	    verseChoose.onchange = function(){
-	      const verse = verseChoose.value;
-	      updataDisplay(verse);
-	    };
+		verseChoose.onchange = function(){
+		  const verse = verseChoose.value;
+		  updataDisplay(verse);
+		};
 		updataDisplay('Verse 1');
 		verseChoose.value = 'Verse 1';
 	</script>
