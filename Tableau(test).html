@@ -8,12 +8,18 @@
 	<div id="vizContainer"></div>	
 	<script type="text/javascript">
 		function initViz() {
-		    var containerDiv = document.getElementById("vizContainer"),
-		    url = "https://public.tableau.com/shared/63T3ZB3G6?:display_count=n&:origin=viz_share_link";
+	      var containerDiv = document.getElementById("vizContainer"),
+	          url = "https://public.tableau.com/shared/BHMYQYHT8?:display_count=n&:origin=viz_share_link",
+	          options = {
+	            hideTabs: true,
+	            onFirstInteractive: function () {
+	            console.log("Run this code when the viz has finished loading.");
+	            }
+	          };
 
-		    var viz = new tableau.Viz(containerDiv, url);
-		}
-		initViz()
+	      var viz = new tableau.Viz(containerDiv, url, options);
+	      // Create a viz object and embed it in the container div. 
+      }
 	</script>
 </body>
 </html>
