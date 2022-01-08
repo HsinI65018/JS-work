@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="2330.css" media="all">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+	<title>Document</title>
+</head>
+<body>
+	<div class="container">
+
+		<header>
+			<div>選擇權評價與避險分析</div>
+			<div class="link"><a href="#main">前往計算</a></div>
+		</header>
+		
+		<section>
+			<div class="intro">本研究選用<strong> 台積電選擇權（CDO）</strong>作為分析買賣權理論價與實際結算價是否有顯著差異。本研究利用 Black&Scholes 評價模型進行選擇權之定價，研究樣本採用台灣經濟新報（TEJ）之 CDO 買賣權日資料，樣本數共計 1,519 筆；買權為 1,067 筆，賣權為 452 筆，研究期間為 2020 年，其中理論價推估之無風險利率採用台灣銀行定存利率。</div>
+			<div class="item">
+				<div>
+					<i class="fab fa-bandcamp fa-2x"></i>
+					<div>台積電選擇權</div>
+				</div>
+				<div>
+					<i class="far fa-calendar-alt fa-2x"></i>
+					<div>2020/01/01 - 2020/12/31</div>
+				</div>
+				<div>	
+					<i class="fas fa-chart-line fa-2x"></i>
+					<div>台灣銀行定存利率</div>
+				</div>
+			</div>	
+		</section>
+
+		<main id="main">
+			<form>
+				<div>
+					<h2>資料搜尋</h2>
+					<fieldset>
+						<legend>日期區間</legend>
+						<div>
+							<label for="date1">
+								<span>起始日期:</span>
+							</label>
+							<input type="date" id="date1" value="2020-01-01" pattern="\d{4}-\d{2}-\d{2}"><br>
+						</div>
+						<div>
+							<label for="date2">
+								<span>結束日期:</span>
+							</label>
+							<input type="date" id="date2" value="2020-01-31" pattern="\d{4}-\d{2}-\d{2}"><br>
+						</div>
+					</fieldset>  
+				</div>
+
+				<div>
+					<label for="option">
+						<span class="title">買賣權:</span>
+					</label>
+					<select id="option">
+						<option>--</option>
+						<option value="Call">買權</option>
+						<option value="Put">賣權</option>
+					</select>
+				</div>
+
+				<div>
+					<label for="price">
+						<span class="title">價　位:</span>
+					</label>
+					<select id="price">
+						<option>--</option>
+						<option value="ATM">價平</option>
+						<option value="ITM">價內</option>
+						<option value="OTM">價外</option>
+					</select>
+				</div>
+
+				<div>
+				<button type="submit" class="btn">確認</button>
+				</div>
+
+				<div>
+					<h5>分析台積電選擇權於不同期間內，買權與賣權之結算價與理論價差異。</h5>
+					<p>1. 請輸入日期區間位於2020/01/01 - 2020/12/31之有效搜尋日期。</p>
+					<p>2. 透過買賣權與價位做為資料篩選，分析不同情況下台積電選擇權之價格差異。</p>
+					<p class="star">* 頁面初始化載入資料為2020/01/01 - 2020/01/31之買權價平資料。</p>
+				</div>
+			</form>
+			<div class="board">
+				<div class="show">
+					<div>交易日期</div>
+					<div>到期月份</div>
+					<div>結算價</div>
+					<div>理論價</div>
+					<div>價差</div>
+				</div>
+			</div>  
+		</main>
+
+		<div class="conclusion">
+			<div>
+				<div class="pic"><img src="CA2.jpg"></div>
+				<div>本研究將理論價計算之變數進行相關性分析，並假設理論價與變數呈正相關。其中四個變數之 P 值接小於 0.0001，但只有 N(d2) 與年化 T 之 R square 有達 0.65，可解釋程度有六成，因此台積電選擇權之 N(d2) 和年化 T 與理論價大致呈顯著正相關。</div>
+			</div>
+			<div>
+				<div class="pic"><img src="Put.jpg"></div>
+				<div>由於賣權之避險績效計算所呈現出來的結果較完整，因此本研究使用賣權資料進行說明。此圖可以看出不同價格在不同價位之避險績效差異，若單僅單純檢視避險績效，台積電選擇權之賣權於價外之避險效果較佳。</div>
+			</div>
+		</div>
+
+		<footer>
+			<div>© 2022 By Chang Hsin-I</div>
+		</footer>
+		
+		<script src="fatch.js"></script>
+		<script>
+			//const btnInit = document.querySelector('.btn');
+			//const bodyInit = document.querySelector('body');
+			//let url = 'https://raw.githubusercontent.com/HsinI65018/JS-work/main/tsmc%20option%20web/2330.json';
+			fetch(url).then(response =>{
+				return response.json()
+			}).then(json =>{
+				body.onload = function(){
+					let data = json;
+					init(data);
+				}
+				/*btn.onclick = function(e){
+					e.preventDefault();
+					let data = json;
+					FilterData(data);
+				}*/
+			}).catch(e =>{alert(e)});
+
+			function init(data){
+				//console.log(data)
+				filterData = data
+					.filter(data => data.Date >= '2020-01-01' && data.Date <= '2020-01-31')
+					.sort((data1,data2) => data1.Date > data2.Date ? 1:-1 )
+				//console.log(filterData)	
+
+				// 進階篩選
+				resultData = filterData.filter(data => data.Option === 'Call'  && data.PriceLevel === 'ATM');
+				//console.log(resultData)
+				DisplayData(resultData);
+			}
+		</script>
+	</div>			
+</body>
+</html>
